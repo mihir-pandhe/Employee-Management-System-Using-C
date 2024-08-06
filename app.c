@@ -35,6 +35,23 @@ void addEmployee()
     }
 }
 
+void viewEmployees()
+{
+    if (employeeCount == 0)
+    {
+        printf("No employees to display.\n");
+        return;
+    }
+
+    printf("\n--- Employee List ---\n");
+    for (int i = 0; i < employeeCount; i++)
+    {
+        printf("ID: %d, Name: %s, Department: %s, Salary: %.2lf\n",
+               employees[i].id, employees[i].name, employees[i].department, employees[i].salary);
+    }
+    printf("---------------------\n");
+}
+
 void menu()
 {
     printf("\n--- Employee Management System ---\n");
@@ -61,7 +78,7 @@ int main()
             addEmployee();
             break;
         case 2:
-            printf("View Employees selected.\n");
+            viewEmployees();
             break;
         case 3:
             printf("Search Employee selected.\n");
