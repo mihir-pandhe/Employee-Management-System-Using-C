@@ -15,6 +15,27 @@ typedef struct
 Employee employees[MAX_EMPLOYEES];
 int employeeCount = 0;
 
+void addEmployee();
+void viewEmployees();
+void searchEmployeeByID();
+void searchEmployeeByName();
+void editEmployee();
+void deleteEmployee();
+void menu();
+void executeChoice(int choice);
+
+int main()
+{
+    int choice;
+    while (1)
+    {
+        menu();
+        scanf("%d", &choice);
+        executeChoice(choice);
+    }
+    return 0;
+}
+
 void addEmployee()
 {
     if (employeeCount < MAX_EMPLOYEES)
@@ -162,40 +183,33 @@ void menu()
     printf("Select an option: ");
 }
 
-int main()
+void executeChoice(int choice)
 {
-    int choice;
-    while (1)
+    switch (choice)
     {
-        menu();
-        scanf("%d", &choice);
-        switch (choice)
-        {
-        case 1:
-            addEmployee();
-            break;
-        case 2:
-            viewEmployees();
-            break;
-        case 3:
-            searchEmployeeByID();
-            break;
-        case 4:
-            searchEmployeeByName();
-            break;
-        case 5:
-            editEmployee();
-            break;
-        case 6:
-            deleteEmployee();
-            break;
-        case 7:
-            printf("Exiting system...\n");
-            exit(0);
-        default:
-            printf("Invalid option. Please try again.\n");
-            break;
-        }
+    case 1:
+        addEmployee();
+        break;
+    case 2:
+        viewEmployees();
+        break;
+    case 3:
+        searchEmployeeByID();
+        break;
+    case 4:
+        searchEmployeeByName();
+        break;
+    case 5:
+        editEmployee();
+        break;
+    case 6:
+        deleteEmployee();
+        break;
+    case 7:
+        printf("Exiting system...\n");
+        exit(0);
+    default:
+        printf("Invalid option. Please try again.\n");
+        break;
     }
-    return 0;
 }
