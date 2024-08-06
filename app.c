@@ -96,6 +96,33 @@ void searchEmployeeByName()
     }
 }
 
+void editEmployee()
+{
+    int id, found = 0;
+    printf("Enter Employee ID to edit: ");
+    scanf("%d", &id);
+    for (int i = 0; i < employeeCount; i++)
+    {
+        if (employees[i].id == id)
+        {
+            printf("Editing Employee with ID: %d\n", id);
+            printf("Enter new Employee Name: ");
+            scanf("%s", employees[i].name);
+            printf("Enter new Employee Department: ");
+            scanf("%s", employees[i].department);
+            printf("Enter new Employee Salary: ");
+            scanf("%lf", &employees[i].salary);
+            printf("Employee details updated successfully.\n");
+            found = 1;
+            break;
+        }
+    }
+    if (!found)
+    {
+        printf("Employee with ID %d not found.\n", id);
+    }
+}
+
 void menu()
 {
     printf("\n--- Employee Management System ---\n");
@@ -132,7 +159,7 @@ int main()
             searchEmployeeByName();
             break;
         case 5:
-            printf("Edit Employee selected.\n");
+            editEmployee();
             break;
         case 6:
             printf("Delete Employee selected.\n");
