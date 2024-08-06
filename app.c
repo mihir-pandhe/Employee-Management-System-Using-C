@@ -1,6 +1,40 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define MAX_EMPLOYEES 100
+
+typedef struct
+{
+    int id;
+    char name[50];
+    char department[50];
+    double salary;
+} Employee;
+
+Employee employees[MAX_EMPLOYEES];
+int employeeCount = 0;
+
+void addEmployee()
+{
+    if (employeeCount < MAX_EMPLOYEES)
+    {
+        printf("Enter Employee ID: ");
+        scanf("%d", &employees[employeeCount].id);
+        printf("Enter Employee Name: ");
+        scanf("%s", employees[employeeCount].name);
+        printf("Enter Employee Department: ");
+        scanf("%s", employees[employeeCount].department);
+        printf("Enter Employee Salary: ");
+        scanf("%lf", &employees[employeeCount].salary);
+        employeeCount++;
+        printf("Employee added successfully.\n");
+    }
+    else
+    {
+        printf("Employee list is full.\n");
+    }
+}
+
 void menu()
 {
     printf("\n--- Employee Management System ---\n");
@@ -24,7 +58,7 @@ int main()
         switch (choice)
         {
         case 1:
-            printf("Add Employee selected.\n");
+            addEmployee();
             break;
         case 2:
             printf("View Employees selected.\n");
